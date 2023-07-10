@@ -1,19 +1,18 @@
-// Configuración de la base de datos
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'sj*bRc$FRS5jGC',
-  database: 'hospital'
-});
+const mysql = require('mysql')
+const conexion = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'DataA*1',
+    database: 'hospital'
+})
 
-// Conexión a la base de datos
-connection.connect(function(err) {
-  if (err) {
-    console.error('Error al conectar a la base de datos: ' + err);
-    return;
-  }
-  console.log('Conexión exitosa a la base de datos');
-});
+conexion.connect(function(error) {
+    if(error){
+        console.log('Ocurrio un error en la base de datos');
+        return;
+    } else{
+        console.log('Conexion exitosa!')
+    }
+})
 
-module.exports = {connection}
+module.exports = {conexion}
