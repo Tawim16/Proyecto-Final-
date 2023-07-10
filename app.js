@@ -3,50 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const moment = require('moment');
-const exhbs = require("express-handlebars");//importacion de handelbars
+const exhbs = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
 var pacientesRouter = require('./routes/pacientes');
 var medicosRouter = require('./routes/medicos');
+var cita_medicaRouter = require('./routes/cita_medica');
 var citasRouter = require('./routes/citas');
-
+const moment = require('moment/moment');
 var app = express();
 
-const hbs = exhbs.create({//recibe las configuraciones de express
-  extname: ".hbs",//facilita el uso de la extension, dandole notacion .hbs
-  partialsDir: ["views/componentes"],//componetes
-});
-
-hbs.handlebars.registerHelper('formatearFecha', function (date) {
-  return moment(date).format('YYYY-MM-DD'); // Formato de fecha deseado
+const hbs = exhbs.create({
+  extname: '.hbs',
+  partialsDir: ['views/componentes'],
 })
 
-hbs.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
-  switch (operator) {
-    case '==':
-      return (v1 == v2) ? options.fn(this) : options.inverse(this);
-    case '===':
-      return (v1 === v2) ? options.fn(this) : options.inverse(this);
-    case '!=':
-      return (v1 != v2) ? options.fn(this) : options.inverse(this);
-    case '!==':
-      return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-    case '<':
-      return (v1 < v2) ? options.fn(this) : options.inverse(this);
-    case '<=':
-      return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-    case '>':
-      return (v1 > v2) ? options.fn(this) : options.inverse(this);
-    case '>=':
-      return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-    default:
-      return options.inverse(this);
-  }
-});
-
+hbs.handlebars.registerHelper('formatoFecha', function (fecha) {
+  return moment(fecha).format('YYYY-MM-DD')
+})
 // view engine setup
-app.engine(".hbs", hbs.engine);//define motor de plantilla
+app.engine('.hbs', hbs.engine)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -59,15 +35,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/pacientes', pacientesRouter);
 app.use('/medicos', medicosRouter);
+app.use('/cita_medica', cita_medicaRouter);
 app.use('/citas', citasRouter);
 
+
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
