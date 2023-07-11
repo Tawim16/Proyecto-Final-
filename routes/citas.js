@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   connection.query('SELECT c.id, c.fecha, pa.nombre paciente, med.nombres medico, med.consultorio FROM cita_medica c, pacientes pa, medicos med WHERE pa.cedula=cedula_paciente AND med.cedula=cedula_medico;', function(error, results) {
     if (error) {
       console.log("Error en la consulta", error)
-      res.status(500).send("Error en la consulta");
+      res.status(600).send("Error en la consulta");
     }else{
     res.render('citas', { citas: results });
     }
