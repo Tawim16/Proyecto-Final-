@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+<!CENTRO MEDICO SALUD PARA TODOS CITAS html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Hospital</title>
+    <title>Formulario Veterinaria</title>
     <link rel="stylesheet" href="/stylesheets/style-formulario.css">
 </head>
 
 <body>
     <header>
-        <h1>CENTRO MEDICO BACKEND</h1>
+        <h1><b>CENTROMEDICO SALUD PARA TODOS</b>CENTRO MEDICO SALUD PARA TODOS</h1>
     </header>
     <main>
-        <form action="./agregar" method="post">
+        <form action="./guardar-cita" method="post">
             <h2>CITA MEDICA</h2>
             <label for="cedula">Número de Cédula:<span> *</span></label>
             <input type="text" id="cedula" name="cedula" required><br>
@@ -23,18 +23,31 @@
             <label for="especialidad">Especialidad requerida:<span> *</span></label>
             <select id="especialidad" name="especialidad" required>
                 <option value="">------------------------  Seleccione la especialidad  ---------------------</option>
-                <option value="Medicina general">Medicina general</option>
-                <option value="Medicina interna">Medicina interna</option>
-                <option value="Cardiologia">Cardiologia</option>
-                <option value="Dermatología">Dermatología</option>
-                <option value="Rehabilitacion Fisica">Rehabilitacion Fisica</option>
-                <option value="Psicologia">psicologia</option>
-                <option value="Odontología">Odontología</option>
-                <option value="Radiologia">Radiologia</option>
-            </select>
+                <option value="Medicina general">Medicina
+                    general</option>
+                    <option value="Medicina interna">Medicina
+                    interna</option>
+                    <option value="Optamologia">Optamologia</option>
+                    <option value="Neurologia">Neurologia
+                    </option>
+                   <option value="Cardiologia">Cardiologia</option>
+                    <option value="Pediatria">Pediatria</option>
+                    <option value="Cirugía ">Cirugía </option>
+                    <option value="Psicologia">Psicologia</option>
+                    <option value="Psiquiatria">Psiquiatria</option>
+                    <option value="nutricion y dietetica">nutricion
+                     y dietetica</option>
+                    <option value="Odontología ">Odontología
+                    </option>
+                    <option value="Farmacología">Farmacología
+                    <option 
+                    value="Fisioterapia">Fisioterapia</option>  
+            </select><br>
             <input type="submit" value="Enviar">
         </form>
     </main>
 </body>
-
+onclick="window.location.href='medicos.html'">Agregar Medico</button>
+       <button
+         onclick="window.location.href='index.html'">Volver al inicio</button>
 </html>
